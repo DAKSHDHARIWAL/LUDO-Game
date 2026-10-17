@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <title>Ludo Royale — Complete Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-mark">♟</div>
+      <div class="brand-copy"><h1>Ludo <span>Royale</span></h1><p>Classic board • Smart opponents • Good times</p></div>
+      <button id="soundBtn" class="icon-btn" aria-label="Toggle sound" title="Toggle sound">🔊</button>
+    </header>
+
+    <main class="game-layout">
+      <section class="board-card">
+        <div class="game-heading">
+          <div><span class="eyebrow">THE GAME IS ON</span><h2>Make your move</h2></div>
+          <div id="gameStatus" class="status-pill"><span class="status-dot"></span> Ready to play</div>
+        </div>
+        <div class="board-frame">
+          <svg id="ludoBoard" viewBox="0 0 700 700" role="img" aria-label="Ludo board"></svg>
+          <div id="boardTokens" class="board-tokens" aria-label="Game tokens"></div>
+        </div>
+        <div class="board-bottom">
+          <div class="turn-indicator"><div id="turnAvatar" class="turn-avatar red">R</div><div><span class="muted">CURRENT TURN</span><strong id="currentTurn">Red</strong></div></div>
+          <div class="dice-area">
+            <button id="diceBtn" class="dice-button" aria-label="Roll dice"><span class="dice-emoji">🎲</span><span>ROLL DICE</span></button>
+            <div id="diceFace" class="dice-face">—</div>
+          </div>
+        </div>
+        <div id="notice" class="notice" role="status">Roll the dice to begin your game.</div>
+      </section>
+
+      <aside class="side-panel">
+        <section class="panel-section">
+          <div class="section-heading"><h3>Players</h3><span class="live-tag"><i></i> LIVE</span></div>
+          <div id="playerList" class="player-list"></div>
+        </section>
+        <section class="panel-section quick-rules">
+          <div class="section-heading"><h3>How to play</h3><span class="rule-icon">ⓘ</span></div>
+          <div class="rule-row"><span class="rule-symbol">🎲</span><p><strong>Roll a six</strong><small>Bring a token out of the yard.</small></p></div>
+          <div class="rule-row"><span class="rule-symbol">⚔️</span><p><strong>Capture opponents</strong><small>Land on an unprotected rival to send them home.</small></p></div>
+          <div class="rule-row"><span class="rule-symbol">⭐</span><p><strong>Safe squares</strong><small>Tokens on safe squares cannot be captured.</small></p></div>
+          <div class="rule-row"><span class="rule-symbol">🏁</span><p><strong>Reach the finish</strong><small>Exact roll required to get each token home.</small></p></div>
+          <p class="rules-note">A six, a capture, or reaching home earns another turn. Three sixes in a row cancel that turn.</p>
+        </section>
+        <section class="panel-section">
+          <div class="section-heading"><h3>Match controls</h3></div>
+          <button id="newGameBtn" class="wide-btn primary">↻ &nbsp; New game</button>
+          <button id="helpBtn" class="wide-btn secondary">⌘ &nbsp; Rules & controls</button>
+          <div class="settings-row"><label for="difficulty">Bot difficulty</label><select id="difficulty"><option value="easy">Easy</option><option value="normal" selected>Normal</option><option value="hard">Hard</option></select></div>
+          <div class="settings-row"><label for="mode">Game mode</label><select id="mode"><option value="bots" selected>Red vs 3 bots</option><option value="local">Local 4 players</option></select></div>
+        </section>
+      </aside>
+    </main>
+    <footer>Made for fun · Local game · No account required</footer>
+  </div>
+
+  <div id="modalBackdrop" class="modal-backdrop hidden">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button id="closeModal" class="modal-close" aria-label="Close">×</button>
+      <div class="modal-icon">🏆</div><h2 id="modalTitle">Red wins!</h2><p id="modalText">Congratulations!</p>
+      <button id="playAgainBtn" class="wide-btn primary">Play again</button>
+    </div>
+  </div>
+  <div id="toast" class="toast" aria-live="polite"></div>
+  <script src="game.js"></script>
+</body>
+</html>
